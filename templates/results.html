@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraper Results</title>
+</head>
+<body>
+    <h1>These are the most happening topics as on {{ timestamp }}</h1>
+    
+    <ul>
+        {% for trend in trends %}
+            <li>{{ trend }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>The IP address used for this query was {{ ip_address }}.</p>
+
+    <h3>Here’s a JSON extract of this record from MongoDB:</h3>
+    <pre>{{ json_extract | tojson(indent=2) }}</pre>
+    
+    <a href="{{ url_for('run_script') }}">Click here to run the query again.</a>
+</body>
+</html>
